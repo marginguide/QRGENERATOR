@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="./static/style.css">
 
 </head>
@@ -27,11 +28,14 @@
             <input type="text" name="link">
             <input type="submit" value="링크 QR 생성">
         </form>
+        <br>
+
     </div>
     <div class="qr">
         <img src="./static/qr.png" class="qr_img">
     </div>
 <script>
+       
     const image = document.getElementsByTagName('img')[0]
     image.addEventListener('click', e => {
     const canvas = document.createElement('canvas')
