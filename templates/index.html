@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/style.css">
+
+</head>
+<body>
+    <div class="input_zone">
+        <form action="/qrlink_qr">
+            <div class="type">QRLINKER</div>
+            <input type="text" name="link">
+            <input type="submit" value="링크 QR 생성">
+        </form>
+        <br>
+        <form action="/wifi_qr">
+            <div class="type">와이파이 아이디</div>
+            <input type="text" name="id">
+            <div class="type">와이파이 비번</div>
+            <input type="text" name="password">
+            <input type="submit" value="와이파이 QR 생성">
+        </form>
+        <br>
+        <form action="/link_qr">
+            <div class="type">링크</div>
+            <input type="text" name="link">
+            <input type="submit" value="링크 QR 생성">
+        </form>
+    </div>
+    <div class="qr">
+        <img src="./static/qr.png" class="qr_img">
+    </div>
+<script>
+    const image = document.getElementsByTagName('img')[0]
+    image.addEventListener('click', e => {
+    const canvas = document.createElement('canvas')
+    canvas.width = image.naturalWidth
+    canvas.height = image.naturalHeight
+    const context = canvas.getContext('2d')
+    context.drawImage(image, 0, 0)
+    canvas.toBlob(blob => {
+        navigator.clipboard.write([
+        new ClipboardItem({
+            [blob.type]: blob
+        })
+        ]).then(() => {
+            window.alert('복사완료');
+        })
+    })
+    })
+</script>
+</body>
+</html>
