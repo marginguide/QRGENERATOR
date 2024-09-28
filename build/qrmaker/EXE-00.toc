@@ -72,7 +72,7 @@
  [],
  False,
  False,
- 1727499769,
+ 1727513353,
  [('runw.exe',
    'C:\\Users\\JAEYEON\\Documents\\GitHub\\QRGENERATOR\\venv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],

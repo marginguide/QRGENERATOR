@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, url_for, redirect, flash, jso
 from PIL import Image
 # import threading   
 import os, webview, qrcode
+
+#  pyinstaller -w --add-data "templates;templates" --add-data "static;static"  --contents-directory "." --icon=.\static\favicon.ico  --noconfirm qrmaker.py
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 folder_path = basedir + '\\qrimage'
 
@@ -16,8 +19,8 @@ def home():
 
 @app.route('/qrlink_qr')
 def qrlink_qr():
-    link = request.args['link']
-    link = "https://qrlinker.pythonanywhere.com/v?v=" + link
+    linknum = request.args['link']
+    link = "https://qrlinker.pythonanywhere.com/v?v=" + linknum
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_M,
@@ -36,7 +39,7 @@ def qrlink_qr():
     re_img.save(f"./static/qr.png")
 
     
-    return render_template('index.html' , img=f"{folder_path}\\qr.png")
+    return render_template('index.html' , img=f"{folder_path}\\qr.png", linknum=linknum)
 @app.route('/link_qr')
 def link_qr():
     link = request.args['link']
@@ -59,7 +62,7 @@ def link_qr():
     re_img.save(f"./static/qr.png")
 
     
-    return render_template('index.html' , img=f"{folder_path}\\qr.png")
+    return render_template('index.html' , img=f"{folder_path}\\qr.png", link = link)
 
 @app.route('/wifi_qr')
 def wifi_qr():
@@ -83,7 +86,7 @@ def wifi_qr():
     re_img.save(f"./static/qr.png")
 
     
-    return render_template('index.html' , img=f"{folder_path}\\qr.png")
+    return render_template('index.html' , img=f"{folder_path}\\qr.png", ssid = ssid, password = password)
 webview.create_window('QR-Generator', app, width=1400, height=1000, min_size=[1400,1000], text_select=True)
 if __name__ == '__main__':
     webview.start() 

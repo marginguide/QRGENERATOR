@@ -2,3 +2,6 @@ qr.png
 dist/qrmaker/static/qr.png
 build/
 dist/
+static/qr.png
+/build
+static/qr.png
