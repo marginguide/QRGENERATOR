@@ -31,11 +31,11 @@ def qrlink_qr():
     qr.add_data(link)
     qr.make(fit=True)
 
-    img = qr.make_image(fill_color="black", back_color="white")
+    img = qr.make_image(fill_color="GREEN", back_color="white")
     
     img.save(f"./static/qr.png")
     qr = Image.open("./static/qr.png")
-    re_img = qr.resize((800, 800), Image.LANCZOS)  # Image.ANTIALIAS
+    re_img = qr.resize((325, 325), Image.LANCZOS)  # Image.ANTIALIAS
     re_img.save(f"./static/qr.png")
 
     

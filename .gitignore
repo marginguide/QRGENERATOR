@@ -7,3 +7,5 @@ static/qr.png
 static/qr.png
 /build
 /dist
+/static/parking_qr
+/venv
