@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash, jsonify  
+from flask import Flask, render_template, request
 from PIL import Image
 # import threading   
 import os, webview, qrcode
@@ -73,7 +73,7 @@ def wifi_qr():
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_M,
         box_size=15,
-        border=1,
+        border=0,
     )
     qr.add_data(f'WIFI:S:{ssid};T:{security};P:{password};;')
     qr.make(fit=True)
@@ -82,12 +82,13 @@ def wifi_qr():
     
     img.save(f"./static/qr.png")
     qr = Image.open("./static/qr.png")
-    re_img = qr.resize((800, 800), Image.LANCZOS)  # Image.ANTIALIAS
+    re_img = qr.resize((950, 950), Image.LANCZOS)  # Image.ANTIALIAS
     re_img.save(f"./static/qr.png")
 
-    
     return render_template('index.html' , img=f"{folder_path}\\qr.png", ssid = ssid, password = password)
-webview.create_window('QR-Generator', app, width=1400, height=1000, min_size=[1400,1000], text_select=True)
+
+
+webview.create_window('QR-Generator', app, width=1500, height=1000, min_size=[1400,1000], text_select=True)
 if __name__ == '__main__':
     webview.start() 
     
