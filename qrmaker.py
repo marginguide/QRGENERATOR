@@ -25,7 +25,7 @@ def qrlink_qr():
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_M,
         box_size=15,
-        border=1,
+        border=0,
     )
 
     qr.add_data(link)
@@ -71,7 +71,7 @@ def wifi_qr():
     security = 'WPA'
     qr = qrcode.QRCode(
         version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_M,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=15,
         border=0,
     )
@@ -82,7 +82,7 @@ def wifi_qr():
     
     img.save(f"./static/qr.png")
     qr = Image.open("./static/qr.png")
-    re_img = qr.resize((950, 950), Image.LANCZOS)  # Image.ANTIALIAS
+    re_img = qr.resize((1000, 1000), Image.LANCZOS)  # Image.ANTIALIAS
     re_img.save(f"./static/qr.png")
 
     return render_template('index.html' , img=f"{folder_path}\\qr.png", ssid = ssid, password = password)

@@ -21,7 +21,7 @@ for i,  row in df.iterrows():
         continue
     password = row['password']
     link = "https://qrlinker.pythonanywhere.com/v?v=" + linknum
-    qr = qrcode.QRCode( version=1, error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=15, border=0, )
+    qr = qrcode.QRCode( version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=5, border=0, )
     qr.add_data(link)
     qr.make(fit=True)
     
@@ -39,5 +39,5 @@ for i,  row in df.iterrows():
         else:
             new_data.append(item)
     qr.putdata(new_data)
-    re_img = qr.resize((307, 307), Image.LANCZOS)  # Image.ANTIALIAS
+    re_img = qr.resize((307 , 307), Image.LANCZOS)  # Image.ANTIALIAS
     re_img.save(f"./static/parking_qr/{linknum}-{password}.png")
