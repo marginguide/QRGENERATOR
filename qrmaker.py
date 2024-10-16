@@ -20,7 +20,7 @@ def home():
 @app.route('/qrlink_qr')
 def qrlink_qr():
     linknum = request.args['link']
-    link = "https://qrlinker.pythonanywhere.com/v?v=" + linknum
+    link = "www.qrlin.kr/v?v=" + linknum
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_M,

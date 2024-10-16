@@ -20,7 +20,7 @@ for i,  row in df.iterrows():
     if int(linknum) < 10020 or int(linknum) >10100:
         continue
     password = row['password']
-    link = "https://qrlinker.pythonanywhere.com/v?v=" + linknum
+    link = "www.qrlin.kr/v?v=" + linknum
     qr = qrcode.QRCode( version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=5, border=0, )
     qr.add_data(link)
     qr.make(fit=True)
