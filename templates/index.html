@@ -9,24 +9,11 @@
 </head>
 <body>
     <div class="input_zone">
-        <form action="/qrlink_qr">
-            <div class="type">QRLINKER</div>
-            <input type="text" name="link" value="{{ linknum }}">
-            <input type="submit" value="링크 QR 생성">
-        </form>
-        <br>
         <form action="/wifi_qr">
             <div class="type">와이파이 아이디</div>
             <input type="text" name="id" value="{{ ssid }}">
             <div class="type">와이파이 비번</div>
             <input type="text" name="password" value="{{ password }}">
-            <div class="type">보안 방식</div>
-            <select name="security">
-                <option value="WPA" {% if security == 'WPA' %}selected{% endif %}>WPA/WPA2</option>
-                <option value="SAE" {% if security == 'SAE' %}selected{% endif %}>WPA3</option>
-                <option value="WEP" {% if security == 'WEP' %}selected{% endif %}>WEP</option>
-                <option value="nopass" {% if security == 'nopass' %}selected{% endif %}>없음</option>
-            </select>
             <input type="submit" value="와이파이 QR 생성">
         </form>
         <br>
