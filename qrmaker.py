@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 import os, webview, qrcode
 
 #  pyinstaller -w --add-data "templates;templates" --add-data "static;static"  --contents-directory "." --icon=.\static\favicon.ico  --noconfirm qrmaker.py
-
+# pyinstaller -w -F --add-data "templates;templates" --add-data "static;static" --icon=".\static\favicon.ico" --noconfirm qrmaker.py
 basedir = os.path.abspath(os.path.dirname(__file__))
 folder_path = basedir + '\\qrimage'
 
